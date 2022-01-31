@@ -18,17 +18,36 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+If you stop at this point you will see a page score of 99 on mobile.
 
-To learn more about Next.js, take a look at the following resources:
+## Next.js GTM
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This example setup is linked from the [Docs](https://nextjs.org/docs/basic-features/script) using this [repo](https://github.com/vercel/next.js/tree/canary/examples/with-google-tag-manager)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Now if you were to stop here you will get a score of between 85-92 on mobile
+[Example with just GTM](https://pagespeed.web.dev/report?url=https%3A%2F%2Fspeedtest-nextjs-2d8m9rnc1-ajonp.vercel.app%2F)
+## Partytown
 
-## Deploy on Vercel
+For implementing [Partytown](https://github.com/builderio/partytown) we use the [Getting Started Guide](https://github.com/BuilderIO/partytown/wiki/Getting-Started).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Add a simple script to `package.json` so that it now updates the `build` script.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run partytown && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "partytown":"partytown copylib public/~partytown"
+  },
+```
+
+Run `npm run build` to see this locally, you will now see files in `public/~partytown`
+
+You can also add to `.gitignore`, this way it will be done on production build for you.
+
+```
+#partytown
+public/~partytown
+```
+

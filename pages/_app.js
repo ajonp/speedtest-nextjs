@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Script
         id="googl-tag-manager"
         strategy="afterInteractive"
+        type='text/partytown'
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }) {
         }}
       />
       <Partytown debug={true} />
-      <script type='text/partytown' dangerouslySetInnerHTML={{ __html: `console.log('adam')` }} />
+      <script type='text/partytown' dangerouslySetInnerHTML={{ __html: `console.log('Partytown is setup')` }} />
       <Component {...pageProps} />
     </>
   )
