@@ -50,4 +50,3 @@ You can also add to `.gitignore`, this way it will be done on production build f
 #partytown
 public/~partytown
 ```
-
